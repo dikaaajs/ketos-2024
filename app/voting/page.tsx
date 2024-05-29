@@ -1,0 +1,242 @@
+"use client";
+
+import { useEffect, useState } from "react";
+
+const calonKetos = [
+  {
+    nama: "Lebron James",
+    visi: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    misi: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    image: "calon-ketos.jpg",
+  },
+  {
+    nama: "Josep Aqua",
+    visi: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    misi: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    image: "calon-ketos.jpg",
+  },
+  {
+    nama: "Asep Jamrud",
+    visi: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    misi: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    image: "calon-ketos.jpg",
+  },
+];
+
+export default function page() {
+  const [NIS, setNIS] = useState<string | null>(null);
+  const [tahapan, setTahapan] = useState<
+    "loading" | "isiNIS" | "pilihKetos" | "selesai"
+  >("isiNIS");
+  const [viewVisiMisi, setViewVisiMisi] = useState(false);
+  const [caleg, setCaleg] = useState<null | number>(null);
+  const [popupConfirm, setPopupConfirm] = useState<boolean>(false);
+
+  const handleSubmitNIS = (e: any) => {
+    e.preventDefault();
+    setTahapan("pilihKetos");
+  };
+
+  const handleClickVisiMisi = (noCaleg: number) => {
+    setCaleg(noCaleg);
+    setViewVisiMisi(true);
+  };
+
+  const handleConfirm = () => {
+    setPopupConfirm(false);
+    setTahapan("selesai");
+  };
+
+  return (
+    <div>
+      <div className="relative h-screen w-full flex items-center justify-center bg-slate-800 bg-opacity-60">
+        <img src="bg.png" className="w-full absolute top-0 -z-10 " />
+
+        {tahapan === "isiNIS" && (
+          <div className="dark w-[80%] py-[80px] px-[30px] text-center bg-white border-2 border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 text-white">
+            <h1 className="text-[3rem] font-poppins-bold">
+              masukan NIS kamu disini !
+            </h1>
+            <form onSubmit={handleSubmitNIS}>
+              <div className="py-[30px]">
+                <div className="flex w-[50%] mx-auto">
+                  <span className="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border border-e-0 border-gray-300 rounded-s-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600">
+                    <svg
+                      className="w-4 h-4 text-gray-500 dark:text-gray-400"
+                      aria-hidden="true"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path d="M10 0a10 10 0 1 0 10 10A10.011 10.011 0 0 0 10 0Zm0 5a3 3 0 1 1 0 6 3 3 0 0 1 0-6Zm0 13a8.949 8.949 0 0 1-4.951-1.488A3.987 3.987 0 0 1 9 13h2a3.987 3.987 0 0 1 3.951 3.512A8.949 8.949 0 0 1 10 18Z" />
+                    </svg>
+                  </span>
+                  <input
+                    onChange={(e: any) => setNIS(e.target.value)}
+                    type="number"
+                    className="rounded-none rounded-e-lg bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 block flex-1 min-w-0 w-full text-sm p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    placeholder="2122 ..."
+                  />
+                </div>
+              </div>
+              <p>klik enter untuk submit</p>
+            </form>
+          </div>
+        )}
+
+        {tahapan === "loading" && (
+          <div className="dark w-[30%] flex flex-col gap-[20px] justify-center py-[80px] px-[30px] text-center bg-white border-2 border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 text-white">
+            <div role="status" className="flex justify-center">
+              <svg
+                aria-hidden="true"
+                className="w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
+                viewBox="0 0 100 101"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
+                  fill="currentColor"
+                />
+                <path
+                  d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z"
+                  fill="currentFill"
+                />
+              </svg>
+              <span className="sr-only">Loading...</span>
+            </div>
+            <p>lodiem ...</p>
+          </div>
+        )}
+
+        {tahapan === "pilihKetos" && (
+          <div className="w-[80%] flex gap-[50px] justify-center">
+            {calonKetos.map((i, idx) => {
+              return (
+                <div
+                  key={idx}
+                  className="w-[30%] max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 dark pt-[30px]"
+                >
+                  <div className="flex flex-col items-center pb-10">
+                    <img
+                      className="w-24 h-24 mb-3 rounded-full shadow-lg"
+                      src={i.image}
+                    />
+                    <h5 className="mb-1 text-xl font-medium text-gray-900 dark:text-white">
+                      {i.nama}
+                    </h5>
+                    <span className="text-sm text-gray-500 dark:text-gray-400">
+                      caleg no 0{idx + 1}
+                    </span>
+                    <div className="flex mt-4 md:mt-6 font-montserrat">
+                      <button
+                        onClick={() => {
+                          setCaleg(idx);
+                          setPopupConfirm(true);
+                        }}
+                        className="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                      >
+                        pilih
+                      </button>
+                      <button
+                        onClick={() => handleClickVisiMisi(idx)}
+                        className="py-2 px-4 ms-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+                      >
+                        visi misi
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        )}
+
+        {tahapan === "selesai" && (
+          <div className="w-1/2 p-6 py-[50px] bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+            <img src="checklist.gif" className="w-[50px] mx-auto" alt="" />
+            <h5 className="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white text-center">
+              anda sudah berhaasil melakukan voting ✔
+            </h5>
+
+            <button
+              type="button"
+              onClick={() => setTahapan("isiNIS")}
+              className="text-white bg-blue-500 mx-auto block hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+            >
+              oke
+            </button>
+          </div>
+        )}
+
+        {viewVisiMisi && caleg !== null && (
+          <div
+            className="fixed w-full h-full flex flex-col justify-center items-center backdrop-brightness-50 dark z-10"
+            onClick={() => {
+              setCaleg(null);
+              setViewVisiMisi(false);
+            }}
+          >
+            <div className="flex gap-[50px]">
+              {/* visi */}
+              <div className="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                <h5 className="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">
+                  Visi
+                </h5>
+                <p className="mb-3 font-normal text-gray-500 dark:text-gray-400">
+                  {calonKetos[caleg].visi}
+                </p>
+              </div>
+
+              {/* misi */}
+              <div className="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                <h5 className="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">
+                  Misi
+                </h5>
+                <p className="mb-3 font-normal text-gray-500 dark:text-gray-400">
+                  {calonKetos[caleg].misi}
+                </p>
+              </div>
+            </div>
+
+            <p className="pt-[50px] !text-white fixed bottom-[200px]">
+              click dimana saja untuk menutup
+            </p>
+          </div>
+        )}
+
+        {popupConfirm === true && caleg !== null && (
+          <div className="fixed w-full h-full flex flex-col justify-center items-center backdrop-brightness-50 dark z-10">
+            <div className="w-1/2 p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+              <h5 className="mb-2 text-2xl text-center font-semibold tracking-tight text-gray-900 dark:text-white">
+                apa anda yakin memilih caleg 0{caleg + 1} ?
+              </h5>
+
+              <div className="flex gap-3 justify-center pt-[15px]">
+                <button
+                  onClick={handleConfirm}
+                  className="relative font-robotomono inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-cyan-500 to-blue-500 group-hover:from-cyan-500 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-cyan-200 dark:focus:ring-cyan-800"
+                >
+                  <span className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+                    yes
+                  </span>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => {
+                    setCaleg(0);
+                    setPopupConfirm(false);
+                  }}
+                  className="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+                >
+                  No
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
