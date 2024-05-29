@@ -4,14 +4,75 @@
 
 @font-face {
   font-family: aceng;
-  src: url("./fonts/Bubble\ Bobble.ttf");
+  src: url("./font/Bubble\ Bobble.ttf");
 }
 
-h1 {
-  color: white;
+@font-face {
+  font-family: rethink;
+  src: url(font/RethinkSans-VariableFont_wght.ttf);
+}
+
+@font-face {
+  font-family: poppins-medium;
+  src: url(font/Poppins-Medium.ttf);
+}
+
+@font-face {
+  font-family: poppins-bold;
+  src: url(font/Poppins-Bold.ttf);
+}
+
+@font-face {
+  font-family: montserrat-bold;
+  src: url(font/Montserrat-Bold.ttf);
+}
+
+@font-face {
+  font-family: robotomono-medium;
+  src: url(font/RobotoMono-Medium.ttf);
+}
+
+p {
+  @apply text-[.9rem] font-rethink font-normal text-gray-700 dark:text-gray-400
+}
+
+.font-rethink {
+  font-family: rethink;
+  font-weight: 500;
+}
+
+.font-robotomono {
+  font-family: robotomono-medium
+}
+
+.font-montserrat {
+  font-family: montserrat-bold;
+}
+
+.font-poppins-medium {
+  font-family: poppins-medium;
+}
+
+.font-poppins-bold {
+  font-family: poppins-bold;
+}
+
+.stroke-white-custom {
   text-shadow:
    -2px -2px 0 white,  
     2px -2px 0 white,
     -2px 2px 0 white,
      2px 2px 0 white;
+}
+
+.stroke-blue-custom {
+  text-shadow:
+   -3px -3px 0 #023464,  
+    3px -3px 0 #023464,
+    -3px 3px 0 #023464,
+     3px 3px 0 #023464;
+}
+
+.btn {
+  @apply py-[7px] px-[15px] rounded-[5px] font-montserrat text-[1rem] w-fit
 }
