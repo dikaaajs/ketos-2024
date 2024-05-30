@@ -1,14 +1,14 @@
 import mongoose, { Document, Schema } from "mongoose"
 export interface ISiswa extends Document {
-    nis: number;
+    nis: string;
     nama: string;
     kelas: string;
-    pilihan: number;
+    pilihan: string;
 }
 
 const siswaSchema: Schema = new mongoose.Schema({
     nis: {
-        type: Number,
+        type: String,
         required: true,
     },
     nama: {
@@ -20,7 +20,7 @@ const siswaSchema: Schema = new mongoose.Schema({
         required: true,
     },
     pilihan: {
-        type: Number,
+        type: String,
         required: true,
     },
 });
