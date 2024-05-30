@@ -13,7 +13,7 @@ export async function GET(req: any) {
         else if (dataSiswa == 'null') {
             return NextResponse.json({msg: "NIS tidak ditemukan"}, { status: 401 }) 
         }
-        return NextResponse.json(dataSiswa);
+        return NextResponse.json(dataSiswa, { status: 200 });
     } catch (error) {
         return NextResponse.json({ msg: "Gagal mengambil data siswa", err: error }, { status: 500 });
     }
