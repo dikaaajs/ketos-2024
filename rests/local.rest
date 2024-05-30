@@ -1,33 +1,35 @@
 ### tes API
-http://localhost:3000
+http://localhost:3000/api/tes
 
+### cek hasil pemilihan
 GET http://localhost:3000/api/hasil
 
 ### cari siswa pake NIS
-GET http://localhost:3000/api/cari?nis=222311444
+GET http://localhost:3000/api/siswa?nis=222311444
+
+### debug pencarian siswa
+GET http://localhost:3000/api/siswa?nis
 
 ### update kolom ketos
-PATCH http://localhost:3000/api/pilih
+PATCH http://localhost:3000/api/siswa?nis=222311444
 Content-Type: application/json
 
 {
-    "nis": 212210226,
-    "kandidat": 4
+    "pilihan": "1"
 }
 
-### debug PUT request
-PATCH http://localhost:3000/api/pilih
+### debug PATCH request
+PATCH http://localhost:3000/api/siswa?nis=222311444
 Content-Type: application/json
 
 {
-    "nis": 212210226,
-    "kandidat": 5
+    
 }
 
-### ngambil data jumlah pemilih
-# response yang diharapkan:
-# {
-#     calon1: 203,
-#     calon2: 999,
-#     calon3: 345,
-# }
+### debug PATCH request
+PATCH http://localhost:3000/api/siswa?nis
+Content-Type: application/json
+
+{
+    
+}
