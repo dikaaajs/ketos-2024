@@ -2,28 +2,26 @@ import connectDB from "@/libs/connectDB";
 import Siswa from "@/models/Siswa";
 import { NextResponse } from "next/server";
 
-connectDB();
-
 export async function GET(req: any) {
-    
+    await connectDB();
     try {
         const nis = await req.nextUrl.searchParams.get("nis");
         const dataSiswa = await Siswa.findOne({nis});
         if (!nis) {
-            return NextResponse.json({msg: "NIS tidak boleh kosong!"}) 
+            return NextResponse.json({msg: "NIS tidak boleh kosong!"}, { status: 401 }) 
         } 
         else if (dataSiswa == 'null') {
-            return NextResponse.json({msg: "NIS tidak ditemukan"}) 
+            return NextResponse.json({msg: "NIS tidak ditemukan"}, { status: 401 }) 
         }
         return NextResponse.json(dataSiswa);
     } catch (error) {
-        return NextResponse.json({ msg: "Gagal mengambil data siswa", err: error });
+        return NextResponse.json({ msg: "Gagal mengambil data siswa", err: error }, { status: 500 });
     }
 
 }
 
 export async function PATCH(req: any) {
-    
+    await connectDB();
     try {
         const nis = await req.nextUrl.searchParams.get("nis");
         if (!nis) {
