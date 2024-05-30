@@ -11,9 +11,9 @@ export async function GET() {
         const jumlahPilihan_1 = await Siswa.countDocuments({ pilihan: "1" })
         const jumlahPilihan_2 = await Siswa.countDocuments({ pilihan: "2" })
         const jumlahPilihan_3 = await Siswa.countDocuments({ pilihan: "3" })
-        return NextResponse.json({ jumlahGolput, jumlahPilihan_1, jumlahPilihan_2, jumlahPilihan_3 });
+        return NextResponse.json({ jumlahGolput, jumlahPilihan_1, jumlahPilihan_2, jumlahPilihan_3 }, { status: 200 });
     } catch (error) {
-        return NextResponse.json({ msg: "Gagal mengambil data siswa", err: error });
+        return NextResponse.json({ msg: "Gagal mengambil data siswa", err: error }, { status: 200 });
     }
 
 }
