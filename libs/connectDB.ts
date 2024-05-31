@@ -4,7 +4,7 @@ const connection: { isConnected?: number } = {};
 
 async function connectDB() {
   if (connection.isConnected) {
-    return console.log("Gagal connect database!");
+    return;
   }
 
   const db = await mongoose.connect(process.env.MONGODB_URI!);

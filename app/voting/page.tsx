@@ -1,6 +1,16 @@
 "use client";
 
+import axios from "axios";
+import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
+import Warning from "../components/toast/Warning";
+
+export interface ISiswa extends Document {
+  nis: string;
+  nama: string;
+  kelas: string;
+  pilihan: string;
+}
 
 const calonKetos = [
   {
@@ -31,10 +41,22 @@ export default function page() {
   const [viewVisiMisi, setViewVisiMisi] = useState(false);
   const [caleg, setCaleg] = useState<null | number>(null);
   const [popupConfirm, setPopupConfirm] = useState<boolean>(false);
+  const [siswa, setSiswa] = useState<ISiswa | null>(null);
+  const [message, setMessage] = useState<string | null>(null);
 
-  const handleSubmitNIS = (e: any) => {
+  const { data: session, status } = useSession();
+
+  const handleSubmitNIS = async (e: any) => {
     e.preventDefault();
-    setTahapan("pilihKetos");
+    setTahapan("loading");
+    const siswa = await axios.get(`/api/siswa?nis=${NIS}`);
+    if (siswa.data === null) {
+      setMessage("NIS tidak ditemukan");
+      setTahapan("isiNIS");
+    } else {
+      setSiswa(siswa.data);
+      setTahapan("pilihKetos");
+    }
   };
 
   const handleClickVisiMisi = (noCaleg: number) => {
@@ -42,15 +64,27 @@ export default function page() {
     setViewVisiMisi(true);
   };
 
-  const handleConfirm = () => {
+  const handleConfirm = async () => {
     setPopupConfirm(false);
-    setTahapan("selesai");
+    if (caleg) {
+      setTahapan("loading");
+      const res = await axios.patch(`api/siswa?nis=${NIS}`, {
+        pilihan: caleg + 1,
+      });
+      console.log(res);
+      setTahapan("selesai");
+    } else {
+      return alert("pilih caketos terlebih dahulu");
+    }
   };
 
   return (
     <div>
       <div className="relative h-screen w-full flex items-center justify-center bg-slate-800 bg-opacity-60">
         <img src="bg.png" className="w-full absolute top-0 -z-10 " />
+
+        {/* toast */}
+        {message !== null && <Warning msg={message} close={setMessage} />}
 
         {tahapan === "isiNIS" && (
           <div className="dark w-[80%] py-[80px] px-[30px] text-center bg-white border-2 border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 text-white">
@@ -79,7 +113,13 @@ export default function page() {
                   />
                 </div>
               </div>
-              <p>klik enter untuk submit</p>
+              <p>
+                klik{" "}
+                <kbd className="px-2 py-1 text-[.7rem] font-semibold text-gray-800 bg-gray-100 border border-gray-200 rounded-lg dark:bg-gray-600 dark:text-gray-100 dark:border-gray-500">
+                  Enter
+                </kbd>{" "}
+                untuk submit
+              </p>
             </form>
           </div>
         )}
@@ -109,13 +149,13 @@ export default function page() {
           </div>
         )}
 
-        {tahapan === "pilihKetos" && (
+        {tahapan === "pilihKetos" && siswa !== null && (
           <div className="w-[80%]">
             <div className="py-5">
               <h2 className="font-aceng stroke-blue-custom text-[3rem] text-center text-white ">
                 pilih Calon Ketua Osis Mu!
               </h2>
-              <p className="text-center !text-white">hi! muhamad febri</p>
+              <p className="text-center !text-white">hi! {siswa.nama}</p>
             </div>
             <div className="flex gap-[50px] justify-center">
               {calonKetos.map((i, idx) => {
