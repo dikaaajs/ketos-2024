@@ -1,11 +1,17 @@
-### tes API
-http://localhost:3000/api/tes
+### debug next auth
+http://localhost:3000/api/auth/providers
+
+### debug auth login
+http://localhost:3000/api/auth/login
+
+### debug middleware
+GET http://localhost:3000/voting
 
 ### debug login
-GET http://localhost:3000/api/account?u
+GET http://localhost:3000/api/user?u
 
 ### debug incorrect login
-GET http://localhost:3000/api/account?u=amtabu123&p=42141341
+GET http://localhost:3000/api/user?u=amtabu123&p=42141341
 
 ### debug pencarian siswa
 GET http://localhost:3000/api/siswa?nis

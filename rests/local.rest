@@ -2,7 +2,7 @@
 http://localhost:3000/api/tes
 
 ### login
-GET http://localhost:3000/api/account?u=asd123&p=123123
+GET http://localhost:3000/api/user?u=asd123&p=123123
 
 ### cek hasil pemilihan
 GET http://localhost:3000/api/hasil
