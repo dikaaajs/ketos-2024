@@ -1,0 +1,37 @@
+### tes api
+https://joyous-fashion-frog.cyclic.app/
+
+### cari user pake NIS
+POST https://joyous-fashion-frog.cyclic.app/student/profile/
+Content-Type: application/json
+
+{
+    "nis": 212210226
+}
+
+### ngambil data dari req.body untuk update kolom ketos
+PUT https://joyous-fashion-frog.cyclic.app/ketos/pilih/
+Content-Type: application/json
+
+{
+    "nis": 212210226,
+    "kandidat": 4
+}
+
+### debug PUT request
+PUT https://joyous-fashion-frog.cyclic.app/ketos/pilih/
+Content-Type: application/json
+
+{
+    "nis": 212210226,
+    "kandidat": 5
+}
+
+### ngambil data jumlah pemilih
+# response yang diharapkan:
+# {
+#     calon1: 203,
+#     calon2: 999,
+#     calon3: 345,
+# }
+GET https://joyous-fashion-frog.cyclic.app/ketos/result/closed

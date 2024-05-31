@@ -1,0 +1,33 @@
+### debug next auth
+http://localhost:3000/api/auth/providers
+
+### debug auth login
+http://localhost:3000/api/auth/login
+
+### debug middleware
+GET http://localhost:3000/voting
+
+### debug login
+GET http://localhost:3000/api/user?u
+
+### debug incorrect login
+GET http://localhost:3000/api/user?u=amtabu123&p=42141341
+
+### debug pencarian siswa
+GET http://localhost:3000/api/siswa?nis
+
+### debug PATCH request
+PATCH http://localhost:3000/api/siswa?nis=222311444
+Content-Type: application/json
+
+{
+    
+}
+
+### debug PATCH request no query
+PATCH http://localhost:3000/api/siswa?nis
+Content-Type: application/json
+
+{
+    
+}
