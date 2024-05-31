@@ -12,7 +12,7 @@ export default function Navbar() {
 
       <ul className="text-white font-robotomono flex justify-center items-center gap-10">
         <Link href={"/voting"}>voting</Link>
-        <Link href={"#about"}>about</Link>
+        <Link href={"/tutorial"}>tutorial</Link>
         <Link href={"/hasil"}>hasil</Link>
       </ul>
 

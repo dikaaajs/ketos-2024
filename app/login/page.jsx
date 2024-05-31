@@ -1,11 +1,14 @@
 "use client";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import { Warning } from "postcss";
 import { useState } from "react";
 
 export default function page() {
   const [username, setUsername] = useState(null);
   const [password, setPassword] = useState(null);
+  const [message, setMessage] = useState(null);
+
   const router = useRouter();
 
   const handleSubmit = async (e) => {
@@ -21,9 +24,11 @@ export default function page() {
       if (res.ok === true) {
         router.replace(`/voting`);
       } else {
-        console.log("password atau username salah");
+        alert("username atau password salah");
       }
     } catch (error) {
+      alert("username atau password salah");
+
       console.log(error);
       console.log("ada yang salah");
     }
@@ -33,8 +38,9 @@ export default function page() {
     <div className="relative h-screen text- flex items-center justify-center w-full">
       <img src="bg.png" className="w-full absolute top-0 -z-10 " />
 
-      {/* form */}
+      {message !== null && <Warning msg={message} close={setMessage} />}
 
+      {/* form */}
       <form
         className="mx-auto bg-white w-[40%] px-[50px] py-[50px] rounded-md"
         onSubmit={handleSubmit}
