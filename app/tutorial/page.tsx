@@ -13,7 +13,7 @@ export default function page() {
               1
             </span>
             <div className="items-center justify-between p-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-700 dark:border-gray-600">
-              <p className="text-sm font-normal text-gray-500 dark:text-gray-300">
+              <p className="font-normal mb-4 text-gray-500 dark:text-gray-300">
                 Login admin terlebih hadulu pada halaman{" "}
                 <Link href="/login" className="text-blue-400">
                   domain/login
@@ -27,8 +27,8 @@ export default function page() {
               2
             </span>
             <div className="items-center justify-between p-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-700 dark:border-gray-600">
-              <p className="text-sm font-normal text-gray-500 dark:text-gray-300">
-                masuk ke halaman voting{" "}
+              <p className="font-normal mb-4 text-gray-500 dark:text-gray-300">
+                Masuk ke halaman voting{" "}
                 <Link href="/voting" className="text-blue-400">
                   domain/voting
                 </Link>
@@ -41,8 +41,8 @@ export default function page() {
               3
             </span>
             <div className="items-center justify-between p-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-700 dark:border-gray-600">
-              <p className="text-sm font-normal text-gray-500 dark:text-gray-300">
-                masuk ke halaman hasil untuk melihat hasil{" "}
+              <p className="font-normal mb-4 text-gray-500 dark:text-gray-300">
+                Masuk ke halaman hasil untuk melihat hasil{" "}
                 <Link href="/hasil" className="text-blue-400">
                   domain/hasil
                 </Link>

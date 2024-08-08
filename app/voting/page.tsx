@@ -70,7 +70,7 @@ export default function page() {
         {tahapan === "isiNIS" && (
           <div className="dark w-[80%] py-[80px] px-[30px] text-center bg-white border-2 border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 text-white">
             <h1 className="text-[3rem] font-poppins-bold">
-              masukan NIS kamu disini !
+              Masukkan NIS kamu disini!
             </h1>
             <form onSubmit={handleSubmitNIS}>
               <div className="py-[30px]">
@@ -95,7 +95,7 @@ export default function page() {
                 </div>
               </div>
               <p>
-                klik{" "}
+                Klik{" "}
                 <kbd className="px-2 py-1 text-[.7rem] font-semibold text-gray-800 bg-gray-100 border border-gray-200 rounded-lg dark:bg-gray-600 dark:text-gray-100 dark:border-gray-500">
                   Enter
                 </kbd>{" "}
@@ -111,7 +111,7 @@ export default function page() {
           <div className="w-[80%]">
             <div className="py-5">
               <h2 className="font-aceng stroke-blue-custom text-[3rem] text-center text-white ">
-                pilih Calon Ketua Osis Mu!
+                Pilih Calon Ketua Osis!
               </h2>
               <p className="text-center !text-white">hi! {siswa.nama}</p>
             </div>
@@ -131,7 +131,7 @@ export default function page() {
                         {i.nama}
                       </h5>
                       <span className="text-sm text-gray-500 dark:text-gray-400">
-                        caketos no 0{idx + 1}
+                        Caketos No. 0{idx + 1}
                       </span>
                       <div className="flex mt-4 md:mt-6 font-montserrat">
                         <button
@@ -141,13 +141,13 @@ export default function page() {
                           }}
                           className="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                         >
-                          pilih
+                          Pilih
                         </button>
                         <button
                           onClick={() => handleClickVisiMisi(idx)}
                           className="py-2 px-4 ms-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
                         >
-                          visi misi
+                          Visi Misi
                         </button>
                       </div>
                     </div>
@@ -162,7 +162,7 @@ export default function page() {
           <div className="w-1/2 p-6 py-[50px] bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
             <img src="checklist.gif" className="w-[50px] mx-auto" alt="" />
             <h5 className="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white text-center">
-              anda sudah berhaasil melakukan voting ✔
+              Anda sudah berhasil melakukan voting ✔
             </h5>
 
             <button
@@ -170,7 +170,7 @@ export default function page() {
               onClick={() => setTahapan("isiNIS")}
               className="text-white bg-blue-500 mx-auto block hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
             >
-              oke
+              Oke
             </button>
           </div>
         )}
@@ -206,7 +206,7 @@ export default function page() {
             </div>
 
             <p className="pt-[50px] !text-white fixed bottom-[200px]">
-              click dimana saja untuk menutup
+              Klik dimana saja untuk menutup
             </p>
           </div>
         )}
@@ -215,7 +215,7 @@ export default function page() {
           <div className="fixed w-full h-full flex flex-col justify-center items-center backdrop-brightness-50 dark z-10">
             <div className="w-1/2 p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
               <h5 className="mb-2 text-2xl text-center font-semibold tracking-tight text-gray-900 dark:text-white">
-                apa anda yakin memilih caleg 0{caleg + 1} ?
+                Anda yakin memilih caleg 0{caleg + 1} ?
               </h5>
 
               <div className="flex gap-3 justify-center pt-[15px]">
@@ -224,7 +224,7 @@ export default function page() {
                   className="relative font-robotomono inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-cyan-500 to-blue-500 group-hover:from-cyan-500 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-cyan-200 dark:focus:ring-cyan-800"
                 >
                   <span className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
-                    yes
+                    Ya
                   </span>
                 </button>
 
@@ -236,7 +236,7 @@ export default function page() {
                   }}
                   className="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
                 >
-                  No
+                  Tidak
                 </button>
               </div>
             </div>
