@@ -47,15 +47,15 @@ export default function page() {
 
   const handleConfirm = async () => {
     setPopupConfirm(false);
-    if (caleg) {
+    if (caleg !== undefined) {
       setTahapan("loading");
       const res = await axios.patch(`api/siswa?nis=${NIS}`, {
-        pilihan: caleg + 1,
+        pilihan: caleg! + 1,
       });
       console.log(res);
       setTahapan("selesai");
     } else {
-      return alert("pilih caketos terlebih dahulu");
+      return alert("Pilih caketos terlebih dahulu");
     }
   };
 
@@ -215,7 +215,7 @@ export default function page() {
           <div className="fixed w-full h-full flex flex-col justify-center items-center backdrop-brightness-50 dark z-10">
             <div className="w-1/2 p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
               <h5 className="mb-2 text-2xl text-center font-semibold tracking-tight text-gray-900 dark:text-white">
-                Anda yakin memilih caleg 0{caleg + 1} ?
+                Anda yakin memilih Ceketos No. 0{caleg + 1} ?
               </h5>
 
               <div className="flex gap-3 justify-center pt-[15px]">

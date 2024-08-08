@@ -39,7 +39,7 @@ export default function page() {
 
         {result && (
           <>
-            <div className="absolute bottom-[150px] !text-white left-1/2 -translate-x-1/2 py-2 px-5 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 dark">
+            <div className="absolute bottom-[50px] !text-white left-1/2 -translate-x-1/2 py-2 px-5 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 dark">
               <span className="text-xl font-medium font-poppins-bold text-white">
                 Golput
               </span>
@@ -57,11 +57,11 @@ export default function page() {
                   >
                     <div className="flex flex-col items-center">
                       <div className="h-[100px] w-full bg-white relative top-0 rounded-t-lg">
-                        <img
+                        {/* <img
                           src={"/calon-ketos-removebg.png"}
                           className="h-[150px] bottom-0 -left-[10px] absolute z-20"
                           alt=""
-                        />
+                        /> */}
                         <div className="absolute right-5 z-10 bottom-[5px]">
                           <span className="text-3xl text-right ml-auto block font-bold font-poppins-bold text-slate-800">
                             #{idx + 1}
