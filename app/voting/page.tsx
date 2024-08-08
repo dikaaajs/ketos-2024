@@ -110,10 +110,10 @@ export default function page() {
         {tahapan === "pilihKetos" && siswa !== null && (
           <div className="w-[80%]">
             <div className="py-5">
+              <p className="text-xl text-center !text-white">Halo, {siswa.nama} - {siswa.kelas}</p>
               <h2 className="font-aceng stroke-blue-custom text-[3rem] text-center text-white ">
-                Pilih Calon Ketua Osis!
+                Pilih Calon Ketua OSIS!
               </h2>
-              <p className="text-center !text-white">hi! {siswa.nama}</p>
             </div>
             <div className="flex gap-[50px] justify-center">
               {calonKetos.map((i, idx) => {
@@ -205,9 +205,9 @@ export default function page() {
               </div>
             </div>
 
-            <p className="pt-[50px] !text-white fixed bottom-[200px]">
+            {/* <p className="pt-[50px] !text-white fixed bottom-[200px]">
               Klik dimana saja untuk menutup
-            </p>
+            </p> */}
           </div>
         )}
 
