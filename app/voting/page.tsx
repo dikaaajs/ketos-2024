@@ -26,6 +26,7 @@ export default function page() {
   const [message, setMessage] = useState<string | null>(null);
 
   const { data: session, status } = useSession();
+  console.log(session);
 
   const handleSubmitNIS = async (e: any) => {
     e.preventDefault();
@@ -110,7 +111,9 @@ export default function page() {
         {tahapan === "pilihKetos" && siswa !== null && (
           <div className="w-[80%]">
             <div className="py-5">
-              <p className="text-xl text-center !text-white">Halo, {siswa.nama} - {siswa.kelas}</p>
+              <p className="text-xl text-center !text-white">
+                Halo, {siswa.nama} - {siswa.kelas}
+              </p>
               <h2 className="font-aceng stroke-blue-custom text-[3rem] text-center text-white ">
                 Pilih Calon Ketua OSIS!
               </h2>

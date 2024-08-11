@@ -12,10 +12,6 @@ export const options: NextAuthOptions = {
       name: "credentials",
       credentials: {},
       async authorize(credentials: any, req) {
-        // debug login
-        // const user = {id: "1"}
-        // return user;
-
         const { username, password } = credentials as {
           username: string;
           password: string;
@@ -30,12 +26,6 @@ export const options: NextAuthOptions = {
           }
 
           console.log(findUser);
-
-          // const passwordMatch = await bcrypt.compare(
-          //   password,
-          //   findUser.password
-          // );
-
           const passwordMatch = password === findUser.password;
           if (!passwordMatch) {
             return null;
@@ -50,9 +40,6 @@ export const options: NextAuthOptions = {
       },
     }),
   ],
-  pages: {
-    signIn: "/login",
-  },
   callbacks: {
     async session({ session, user }) {
       return session;

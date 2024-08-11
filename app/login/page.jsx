@@ -22,7 +22,7 @@ export default function page() {
 
       console.log(res);
       if (res.ok === true) {
-        router.replace(`/voting`);
+        router.push(`/voting`);
       } else {
         alert("username atau password salah");
       }
