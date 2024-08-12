@@ -3,8 +3,8 @@ import Siswa from "@/models/Siswa";
 import { NextResponse } from "next/server";
 
 export async function GET() {
-  await connectDB();
   try {
+    await connectDB();
     const tmp = await Siswa.find();
     const countAll = tmp.length;
     console.log(countAll);
@@ -35,7 +35,12 @@ export async function GET() {
     result.ceketos[2].persen = (result.ceketos[2].count / countAll) * 100;
     result.golput.persen = (result.golput.count / countAll) * 100;
 
-    return NextResponse.json(result, { status: 200 });
+    const response = NextResponse.json(result, { status: 200 });
+    response.headers.set(
+      "Cache-Control",
+      "no-cache, no-store, must-revalidate"
+    );
+    return response;
   } catch (error) {
     return NextResponse.json(
       { msg: "Gagal mengambil data hasil pemilihan", err: error },
