@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import Warning from "../components/toast/Warning";
 import { calonKetos } from "@/data/caketos";
 import Loading from "../components/Loading";
+import Link from "next/link";
 
 export interface ISiswa extends Document {
   nis: string;
@@ -59,6 +60,35 @@ export default function page() {
       return alert("Pilih caketos terlebih dahulu");
     }
   };
+
+  if (status === "loading") {
+    return (
+      <div className="relative h-screen w-full flex items-center justify-center bg-slate-800 bg-opacity-60">
+        <img src="bg.png" className="w-full absolute top-0 -z-10 " />
+        <Loading />
+      </div>
+    );
+  }
+
+  if (status === "unauthenticated") {
+    return (
+      <div className="relative h-screen w-full flex items-center justify-center bg-slate-800 bg-opacity-60">
+        <img src="bg.png" className="w-full absolute top-0 -z-10 " />
+        <div className="dark w-[30%] fixed top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 flex flex-col gap-[20px] justify-center py-[80px] px-[30px] text-center bg-white border-2 border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 text-white">
+          <div role="status" className="flex justify-center">
+            <span className="sr-only">Loading...</span>
+          </div>
+          <p>untuk mengakses halaman ini diperlukan login admin!</p>
+          <Link
+            href={"/login"}
+            className="btn bg-white text-black block mx-auto"
+          >
+            login
+          </Link>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div>
@@ -203,13 +233,13 @@ export default function page() {
                   Misi
                 </h5>
                 <ol className="text-sm max-h-[80vh]  max-w-[40vw]">
-                {calonKetos[caleg].misi.map((i, idx) => {
-                  return (
-                    <li className="mb-3 font-normal text-gray-500 dark:text-gray-400">
-                      {i}
-                    </li>
-                  )
-                })}
+                  {calonKetos[caleg].misi.map((i, idx) => {
+                    return (
+                      <li className="mb-3 font-normal text-gray-500 dark:text-gray-400">
+                        {i}
+                      </li>
+                    );
+                  })}
                 </ol>
               </div>
             </div>
