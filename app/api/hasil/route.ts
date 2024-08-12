@@ -7,7 +7,6 @@ export async function GET() {
   try {
     const tmp = await Siswa.find();
     const countAll = tmp.length;
-    console.log(countAll);
 
     const result = {
       ceketos: [
@@ -18,17 +17,22 @@ export async function GET() {
       golput: { persen: 0, count: 0 },
     };
 
-    tmp.forEach((siswa) => {
-      if (siswa.pilihan === "0") {
-        result.golput.count += 1;
-      } else if (siswa.pilihan === "1") {
-        result.ceketos[0].count += 1;
-      } else if (siswa.pilihan === "2") {
-        result.ceketos[1].count += 1;
-      } else if (siswa.pilihan === "3") {
-        result.ceketos[2].count += 1;
-      }
-    });
+    result.ceketos[0].count = await Siswa.countDocuments({ pilihan: "1"});
+    result.ceketos[1].count = await Siswa.countDocuments({ pilihan: "2"});
+    result.ceketos[2].count = await Siswa.countDocuments({ pilihan: "3"});
+    result.golput.count = await Siswa.countDocuments({ pilihan: "0"});
+
+    // tmp.forEach((siswa) => {
+    //   if (siswa.pilihan === "0") {
+    //     result.golput.count += 1;
+    //   } else if (siswa.pilihan === "1") {
+    //     result.ceketos[0].count += 1;
+    //   } else if (siswa.pilihan === "2") {
+    //     result.ceketos[1].count += 1;
+    //   } else if (siswa.pilihan === "3") {
+    //     result.ceketos[2].count += 1;
+    //   }
+    // });
 
     result.ceketos[0].persen = (result.ceketos[0].count / countAll) * 100;
     result.ceketos[1].persen = (result.ceketos[1].count / countAll) * 100;
